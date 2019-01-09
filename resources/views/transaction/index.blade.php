@@ -19,14 +19,14 @@
         <span us-spinner="{radius:6, width:2, length:5}"></span>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li ng-repeat="type in types" class="<% type.name=='Item Donation' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
+              <li ng-repeat="type in types" class="<% type.name=='Cash' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
             </ul>
             <div class="tab-content">
-              <div ng-repeat="type in types" class="tab-pane <% type.name=='Item Donation' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
+              <div ng-repeat="type in types" class="tab-pane <% type.name=='Cash' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
                 <table class="table">
                   <thead>
                       <th>DA No.</th>
-                      <th>Donor/Company</th>
+                      <th>Customer</th>
                       <th>No. of Items</th>
                       <th>Special Discount</th>
                       <th>Total</th>
@@ -111,7 +111,7 @@
                 <div class="modal-body">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs pull-right">
-                          <li class=""><a href="#tab_1-1" data-toggle="tab" aria-expanded="false">Donor</a></li>
+                          <li class=""><a href="#tab_1-1" data-toggle="tab" aria-expanded="false">Customer</a></li>
                           <li class=""><a href="#tab_2-2" data-toggle="tab" aria-expanded="false">Item</a></li>
                           <li class="active"><a href="#tab_3-2" data-toggle="tab" aria-expanded="true">Transaction</a></li>
                           <!-- <li class="dropdown">
@@ -190,9 +190,9 @@
                                     <textarea ng-model="new_customer.profile.address" class="form-control"></textarea>
                                     <!-- <input ng-model="new_customer.profile.address" type="text" class="form-control" placeholder="Full Address"> -->
                                   </div>
-                                  <label class="col-sm-1 control-label">Donor Type</label>
+                                  <label class="col-sm-1 control-label">Customer Type</label>
                                   <div class="col-sm-3">
-                                    <input ng-model="new_customer.donor_type" list="donor_types" type="text" class="form-control" placeholder="Donor Type">
+                                    <input ng-model="new_customer.donor_type" list="donor_types" type="text" class="form-control" placeholder="Customer Type">
                                   </div>
                                   <datalist id="donor_types">
                                     <option ng-repeat="type in donor_types" value="<% type.name %>"><!-- <% type.description %> --></option>
@@ -202,7 +202,7 @@
                                   
                               </div><!-- /.box-body -->
                               <div class="box-footer">
-                                <button ng-click="new_customer_btn(new_customer, modal.title)" class="btn btn-primary btn-flat pull-right">New Donor</button>
+                                <button ng-click="new_customer_btn(new_customer, modal.title)" class="btn btn-primary btn-flat pull-right">New Customer</button>
                               </div><!-- /.box-footer -->
                             </form>
                             <input type="text" ng-model="search_donor" class="form-control" placeholder="Search..">
@@ -318,7 +318,7 @@
                                         <option>Select Payment Type</option>
                                     </select>
                                   </div>
-                                  <label class="col-sm-1 control-label">Donor</label>
+                                  <label class="col-sm-1 control-label">Customer</label>
                                   <div class="col-sm-3">
                                     <select 
                                         class="form-control select2" 

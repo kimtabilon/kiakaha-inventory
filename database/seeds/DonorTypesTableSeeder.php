@@ -13,6 +13,6 @@ class DonorTypesTableSeeder extends Seeder
     {
         factory(App\DonorType::class)->create(['name' => 'Company']);
         factory(App\DonorType::class)->create(['name' => 'Individual']);
-        factory(App\DonorType::class)->create(['name' => 'Customer']);
+        // factory(App\DonorType::class)->create(['name' => 'Customer']);
     }
 }

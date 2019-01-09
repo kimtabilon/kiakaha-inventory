@@ -12,7 +12,7 @@
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Inventory</li>
         </ol>
-    </section>    
+    </section>
 
     @include('adminlte::partials.alert')
 
@@ -38,10 +38,10 @@
                         <th>New Value</th>
                         <th>Ref Image</th>
                         <th>Market Value</th>
-                        <th>ReStore Image</th>
-                        <th>ReStore Value</th>
+                        <th>Item Image</th>
+                        <th>Store Value</th>
                         <!-- <th>Dscnt</th> -->
-                        <th>Donor/Company</th>
+                        <th>Customer</th>
                         <th>Remarks</th>
                         <th>Added</th>
                         <!-- <th>Barcode</th> -->
@@ -102,7 +102,7 @@
                             <!-- <td ng-click="show_discounts(inv)"><% sum(inv.item_discounts, 'percent') %></td> -->
                             <td><% '00'+inv.donors[inv.donors.length - 1].id %> - <% inv.donors[inv.donors.length - 1].name %> <% inv.donors[inv.donors.length - 1].profile.company %></td>
                             <td ng-click="toggle('remarks', inv)"><% inv.remarks %></td>
-                            <td><% inv.created_at %></td>  
+                            <td><% inv.created_at %></td>
                             <!-- <td><img ng-if="inventory.length>1" src="data:image/png;base64,<% code(inv.item_codes, 'Barcode').barcode %>" alt="barcode" /></td> -->
                         </tr>
                     </tbody>

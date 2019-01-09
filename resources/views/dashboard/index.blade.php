@@ -66,7 +66,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Donors</span>
+                  <span class="info-box-text">Customers</span>
                   <span class="info-box-number"><% donors.length %></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -162,7 +162,7 @@
               <div class="info-box bg-green">
                 <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Donors</span>
+                  <span class="info-box-text">Customers</span>
                   <span class="info-box-number"><% donors.length %></span>
                   <div class="progress">
                     <div class="progress-bar" style="width: 20%"></div>
@@ -202,9 +202,9 @@
               <!-- USERS LIST -->
               <div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Top Donors</h3>
+                  <h3 class="box-title">Top Customer</h3>
                   <div class="box-tools pull-right">
-                    <span class="label label-danger"><% donors.length %> Top Donors</span>
+                    <span class="label label-danger"><% donors.length %> Top Customer</span>
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>

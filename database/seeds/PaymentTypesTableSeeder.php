@@ -11,18 +11,17 @@ class PaymentTypesTableSeeder extends Seeder
      */
     public function run()
     {
-      $types = [
-				'Cash',
-				'Credit',
+        $types = [
+                'Cash',
+                'Credit',
                 'Debit',
-				'Item Donation',
+                // 'Item Donation',
                 'Internal Sale',
-				'Warehouse Transfer',
-    	];
+                'Warehouse Transfer',
+        ];
 
-    	foreach($types as $t)
-    	{
-    		factory(App\PaymentType::class)->create(['name' => $t]);
-    	}
+        foreach ($types as $t) {
+            factory(App\PaymentType::class)->create(['name' => $t]);
+        }
     }
 }

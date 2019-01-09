@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'ReStore',
+    'title' => 'Kiakaha Inv',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Re</b>Store',
+    'logo' => '<b></b>Inventory',
 
-    'logo_mini' => '<b>R</b>S',
+    'logo_mini' => '<b>I</b>nv',
 
     /*
     |--------------------------------------------------------------------------
@@ -134,7 +134,7 @@ return [
             'text' => 'Inventory',
             'url'  => 'inventories',
             'icon' => 'th',
-            'url'  => 'inventories', 
+            'url'  => 'inventories',
             'can'  => 'manager-receiving-coordinator-access',
             // 'label'       => 4,
             // 'label_color' => 'success',
@@ -175,7 +175,7 @@ return [
                             'url'  => 'inventories#for-disposal',
                             'icon' => 'trash',
                         ],
-                    ],    
+                    ],
                 ],
                 [
                     'text' => 'Good',
@@ -216,7 +216,7 @@ return [
                     'icon' => 'exchange',
                     'icon_color' => 'red',
                 ],
-            ],    
+            ],
         ],
         [
             'text' => 'Transaction',
@@ -234,7 +234,7 @@ return [
             'text'    => 'Item',
             'url'     => '#',
             'icon'    => 'files-o',
-            'url'     => 'items', 
+            'url'     => 'items',
             'can'  => 'manager-receiving-coordinator-access',
             // 'label'       => 4,
             // 'label_color' => 'success',
@@ -261,8 +261,8 @@ return [
             ],
         ],
         [
-            'text' => 'Donor',
-            'url'  => 'donors',
+            'text' => 'Customer',
+            'url'  => 'customers',
             'icon' => 'users',
             'can'  => 'manager-access',
         ],

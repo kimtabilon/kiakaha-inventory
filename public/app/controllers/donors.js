@@ -1,5 +1,4 @@
-app
-.controller('donorsController', function($scope, $http, $location, $filter, API_URL) { 
+app.controller('donorsController', function($scope, $http, $location, $filter, API_URL) { 
 
     $http
     .get(API_URL + 'donors')
@@ -63,11 +62,11 @@ app
                     var donor_type_active = $filter('filter')($scope.types, { id: data.donor_type_id }, true)[0];
                     // console.log(data.donor_type_id);
                     $scope.new_customer = data;
-                    // console.log(data);
+                    console.log(data);
                     $scope.new_customer.donor_type = donor_type_active.name;
                     $scope.modal = {
                         type        : type, 
-                        title       : 'Modify Donor',
+                        title       : 'Modify Customer',
                     }
                 }
                 else {
@@ -91,7 +90,7 @@ app
 
                     $scope.modal = {
                         type        : type, 
-                        title       : 'New Donor',
+                        title       : 'New Customer',
                     }
                 }
                 break;    
@@ -113,13 +112,14 @@ app
             .then(function (response) {
                 
                 var new_donor   = response.data;
+
                 var type        = $filter('filter')($scope.types, { id: new_donor.donor_type_id }, true)[0];
                 var old_type    = $filter('filter')($scope.types, { id: donor.donor_type_id }, true)[0];
                 var index       = $scope.types.indexOf(type);
                 var old_index   = $scope.types.indexOf(old_type);
                 
 
-                if(action=="New Donor") {
+                if(action=="New Customer") {
                     $scope.types[index].donors.push(new_donor);
                 }
                 else {
@@ -132,7 +132,7 @@ app
                     $scope.types[index].donors.push(new_donor);
                 }
 
-                $scope.new_customer = { 
+                $scope.new_customer = {
                     id          : 0,
                     given_name  : '',
                     middle_name : '',
@@ -153,7 +153,7 @@ app
             $('#inventoryModal').modal('hide');
         }
         else {
-            alert('Please select type of donor.');
+            alert('Please select type of customer.');
         }
             
     }

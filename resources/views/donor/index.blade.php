@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Donors')
+@section('title', 'Customers')
 
 @section('content')
 <div ng-controller="donorsController">
     <section class="content-header">
-        <h1>Donors <span class="badge" style="cursor: pointer;" ng-click="toggle('','create_new_donor')">Create</span></h1>
+        <h1>Customers <span class="badge" style="cursor: pointer;" ng-click="toggle('','create_new_donor')">Create</span></h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Donors</li>
+            <li class="active">Customers</li>
         </ol>
     </section>    
 
@@ -19,10 +19,10 @@
         <span us-spinner="{radius:6, width:2, length:5}"></span>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li ng-repeat="type in types" class="<% type.name=='Customer' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
+              <li ng-repeat="type in types" class="<% type.name=='Individual' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
             </ul>
             <div class="tab-content">
-              <div ng-repeat="type in types" class="tab-pane <% type.name=='Customer' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
+              <div ng-repeat="type in types" class="tab-pane <% type.name=='Individual' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
                 <table class="table">
                   <thead>
                       <th>Items</th>
@@ -170,9 +170,9 @@
                           <div class="col-sm-7">
                             <input ng-model="new_customer.profile.address" type="text" class="form-control" placeholder="Full Address">
                           </div>
-                          <label class="col-sm-1 control-label">Donor</label>
+                          <label class="col-sm-1 control-label">Customer</label>
                           <div class="col-sm-3">
-                            <input ng-model="new_customer.donor_type" list="donor_types" type="text" class="form-control" placeholder="Donor Type">
+                            <input ng-model="new_customer.donor_type" list="donor_types" type="text" class="form-control" placeholder="Customer Type">
                           </div>
                           <datalist id="donor_types">
                             <option ng-repeat="type in types" value="<% type.name %>"><% type.description %></option>
