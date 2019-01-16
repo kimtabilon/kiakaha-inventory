@@ -267,7 +267,7 @@
                             ITEM CODE: <% code(i.item_codes, 'Barcode').code %><br />
                             ITEM: <% i.item.name %><span ng-if="i.remarks"> - </span><% i.remarks %><br />
                             MARKET VALUE: <% i.item_prices[i.item_prices.length - 1].market_price %><br />
-                            RESTORE VALUE: <% i.item_restore_prices[i.item_restore_prices.length - 1].market_price %><br />
+                            STORE VALUE: <% i.item_restore_prices[i.item_restore_prices.length - 1].market_price %><br />
                             <!-- RESTORE VALUE: <% new_value(i) %><br /> -->
                             <!-- DISCOUNT: <% sum(inv.item_discounts, 'percent') %> -->
                         </div>

@@ -19,7 +19,7 @@
         <span us-spinner="{radius:6, width:2, length:5}"></span>
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li ng-repeat="type in types" class="<% type.name=='Cash' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
+              <li ng-repeat="type in types" ng-hide="type.name=='Add Item to Inventory'" class="<% type.name=='Cash' ? 'active' : '' %>"><a href="#<% type.name.replace(' ', '_') %>" data-toggle="tab" aria-expanded="false"><% type.name %></a></li>
             </ul>
             <div class="tab-content">
               <div ng-repeat="type in types" class="tab-pane <% type.name=='Cash' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
@@ -72,7 +72,7 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Market Value</th>
-                            <th>ReStore Value</th>
+                            <th>Store Value</th>
                             <!-- <th>Discount</th> -->
                             <th>Remarks</th>
                             <th>Status</th>
@@ -336,8 +336,8 @@
                                     <textarea ng-model="remarks" class="form-control input-sm"></textarea>
                                     <!-- <input ng-model="remarks" type="text" class="form-control input-sm" placeholder="Remarks"> -->
                                   </div>
-                                  <label ng-show="payment_type!='' && payment_type.name!='Item Donation'" class="col-sm-1 control-label">Discount</label>
-                                  <div ng-show="payment_type!='' && payment_type.name!='Item Donation'" class="col-sm-3">
+                                  <label ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'" class="col-sm-1 control-label">Discount</label>
+                                  <div ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'" class="col-sm-3">
                                     <input ng-model="special_discount" type="text" class="form-control input-sm" placeholder="Special Discount">
                                   </div>
                                 </div>  
@@ -349,7 +349,7 @@
                                         <th class="text-center">Unit</th>
                                         <th class="text-center">Market Value</th>
                                         <th class="text-center">New Value</th>
-                                        <th class="text-center">ReStore Value</th>
+                                        <th class="text-center">Store Value</th>
                                         <!-- <th class="text-center">Discount</th> -->
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Remarks</th>
@@ -384,7 +384,7 @@
                                 <button type="submit" class="btn btn-flat btn-default pull-right" data-dismiss="modal" style="margin-right: 5px;">Cancel</button>
                                 <div class="clearfix"></div>
                                 
-                                <div ng-if="payment_type!='' && payment_type.name=='Item Donation'">
+                                <div ng-if="payment_type!='' && payment_type.name=='Add Item to Inventory'">
                                   <hr />
                                   <div class="form-group">
                                     <label class="col-sm-2 control-label">Item</label>
@@ -434,9 +434,9 @@
                                     <div class="col-sm-2">
                                       <input type="text" ng-model="new_inv.selling_price" class="form-control input-sm" placeholder="New Value">
                                     </div>
-                                    <label class="col-sm-2 control-label">ReStore Value</label>
+                                    <label class="col-sm-2 control-label">Store Value</label>
                                     <div class="col-sm-2">
-                                      <input type="text" ng-model="new_inv.restore_price" class="form-control input-sm" placeholder="ReStore Value">
+                                      <input type="text" ng-model="new_inv.restore_price" class="form-control input-sm" placeholder="Store Value">
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -451,7 +451,7 @@
                                 <div class="clearfix"></div>
                               </div>
                             </form>
-                            <form class="form-horizontal" ng-if="payment_type!='' && payment_type.name!='Item Donation'">
+                            <form class="form-horizontal" ng-if="payment_type!='' && payment_type.name!='Add Item to Inventory'">
                               <hr />
                                 <div class="form-group">
                                   <label class="col-sm-2 control-label">Status</label>

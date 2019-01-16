@@ -45,7 +45,7 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-share-alt"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Transactions</span>
-                  <span class="info-box-number"><% transactions.length %></span>
+                  <span class="info-box-number"><% transactions.length - filteredTrans.length %></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->

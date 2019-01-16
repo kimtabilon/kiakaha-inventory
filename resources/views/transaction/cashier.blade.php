@@ -76,7 +76,7 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Market Value</th>
-                            <th>ReStore Value</th>
+                            <th>Store Value</th>
                             <!-- <th>Discount</th> -->
                             <th>Remarks</th>
                             <th>Status</th>
@@ -267,8 +267,8 @@
                                     <textarea ng-model="remarks" class="form-control input-sm"></textarea>
                                     <!-- <input ng-model="remarks" type="text" class="form-control input-sm" placeholder="Remarks"> -->
                                   </div>
-                                  <label ng-show="payment_type!='' && payment_type.name!='Item Donation'" class="col-sm-1 control-label">Discount</label>
-                                  <div ng-show="payment_type!='' && payment_type.name!='Item Donation'" class="col-sm-3">
+                                  <label ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'" class="col-sm-1 control-label">Discount</label>
+                                  <div ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'" class="col-sm-3">
                                     <input ng-model="special_discount" type="text" class="form-control input-sm" placeholder="Special Discount">
                                   </div>
                                 </div>  
@@ -279,7 +279,7 @@
                                         <th class="text-center">Qty</th>
                                         <th class="text-center">Unit</th>
                                         <th class="text-center">Market Value</th>
-                                        <th class="text-center">ReStore Value</th>
+                                        <th class="text-center">Store Value</th>
                                         <!-- <th class="text-center">Discount</th> -->
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Remarks</th>
@@ -326,7 +326,7 @@
                                             <strong><% inventory.quantity %></strong> <% inventory.unit %>/s<br/>
                                             <strong><% inventory.item_codes[inventory.item_codes.length -1 ].code %></strong><br/>
                                             <em>Market Value : <% inventory.item_prices[inventory.item_prices.length - 1].market_price %></em><br/>
-                                            <em>ReStore Value : <% inventory.item_restore_prices[inventory.item_restore_prices.length - 1].market_price %></em><br/>
+                                            <em>Store Value : <% inventory.item_restore_prices[inventory.item_restore_prices.length - 1].market_price %></em><br/>
                                             <!-- <em>ReStore Value : <% new_value(inventory) %></em><br/> -->
                                             <!-- <em><% inventory.remarks %></em><br/> -->
                                             <p><button ng-click="cashier_add_item(inventory)" class="btn btn-primary btn-xs">Add Item</button></p>

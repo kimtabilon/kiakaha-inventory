@@ -53,6 +53,8 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         $scope.itemStatus   = response.data.itemStatus;
     	$scope.transactions = response.data.transactions;
 
+        $scope.filteredTrans = $filter('filter')($scope.transactions, { payment_type_id: response.data.add_item_to_inv.id }, true);
+
         $scope.good_items = $filter('filter')($scope.itemStatus, { name: 'Good'}, true)[0];
         $scope.sold_items = $filter('filter')($scope.itemStatus, { name: 'Sold'}, true)[0];
     });
@@ -79,6 +81,14 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                 $scope.donors       = response.data.donors;
                 $scope.itemStatus   = response.data.itemStatus;
                 $scope.transactions = response.data.transactions;
+                $scope.add_item_to_inv = response.data.add_item_to_inv;
+
+                $scope.filteredTrans = $filter('filter')($scope.transactions, { payment_type_id: response.data.add_item_to_inv.id }, true);
+
+                console.log('Transactions ----------');
+                console.log($scope.transactions);
+                console.log('filteredTrans ----------');
+                console.log($scope.filteredTrans);
 
                 $scope.good_items = $filter('filter')($scope.itemStatus, { name: 'Good'}, true)[0];
                 $scope.sold_items = $filter('filter')($scope.itemStatus, { name: 'Sold'}, true)[0];

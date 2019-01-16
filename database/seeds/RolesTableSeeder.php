@@ -19,28 +19,28 @@ class RolesTableSeeder extends Seeder
         factory(App\User::class)
             ->create([
                 'role_id'       => $manager->id,
-                'given_name'    => 'Francis',
+                'given_name'    => 'Christopher',
                 'middle_name'   => '',
-                'last_name'     => 'Macatulad',
-                'email'         => 'francis.macatulad@habitat.org.ph',
+                'last_name'     => 'Dickens',
+                'email'         => 'christopher.dickens@gmail.com',
                 ]);
             
         factory(App\User::class)
             ->create([
                 'role_id'       => $rc->id,
-                'given_name'    => 'Jericho',
+                'given_name'    => 'Ryan',
                 'middle_name'   => '',
-                'last_name'     => 'Vasquez',
-                'email'         => 'jericho.vasquez@habitat.org.ph',
+                'last_name'     => 'Welch',
+                'email'         => 'ryan.welch@gmail.com',
                 ]);
                 
         factory(App\User::class)
             ->create([
                 'role_id'       => $cashier->id,
-                'given_name'    => 'Kem Robert',
+                'given_name'    => 'Thomas',
                 'middle_name'   => '',
-                'last_name'     => 'Tan',
-                'email'         => 'kemrobert.tan@habitat.org.ph',
-                ]);            
+                'last_name'     => 'North',
+                'email'         => 'thomas.north@gmail.com',
+                ]);
     }
 }
