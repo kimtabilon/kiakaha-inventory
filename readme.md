@@ -8,9 +8,9 @@
 - run `php artisan db:seed`
 
 ## USERS
-                    
-ROLE  | NAME | EMAIL
-------------- | -------------
-Manager  | Christopher	Dickens | christopher.dickens@gmail.com
-Receiving Coordinator  | Ryan	Welch | ryan.welch@gmail.com
-Cashier  | Thomas	North | thomas.north@gmail.com 
+
+| ROLE | NAME | EMAIL |
+| --- | --- | --- |
+| Manager status | Christopher	Dickens | christopher.dickens@gmail.com |
+| Receiving Coordinator | Ryan	Welch | ryan.welch@gmail.com |
+| Cashier | Thomas	North | thomas.north@gmail.com |
