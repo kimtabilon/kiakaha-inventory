@@ -6,6 +6,7 @@
 - run `php artisan migrate`
 - change/add roles in **database/seeds/RolesTableSeeder.php**
 - run `php artisan db:seed`
+- run `php artisan serve` and browse <http://127.0.0.1:8000>
 
 ## USERS
 
