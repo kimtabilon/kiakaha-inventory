@@ -1,3 +1,9 @@
+## Download Required Software
+
+- <https://www.apachefriends.org/download.html>
+- <https://getcomposer.org/download/>
+- <https://git-scm.com/downloads>
+
 ## INSTALLATION
 
 - run `git clone https://github.com/kimtabilon/kiakaha-inventory.git`
