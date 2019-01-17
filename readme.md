@@ -11,6 +11,6 @@
 
 | ROLE | NAME | EMAIL |
 | --- | --- | --- |
-| Manager status | Christopher	Dickens | christopher.dickens@gmail.com |
+| Manager | Christopher	Dickens | christopher.dickens@gmail.com |
 | Receiving Coordinator | Ryan	Welch | ryan.welch@gmail.com |
 | Cashier | Thomas	North | thomas.north@gmail.com |
