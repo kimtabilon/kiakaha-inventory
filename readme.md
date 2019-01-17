@@ -1,4 +1,4 @@
-## STEPS
+## INSTALLATION
 
 - run `git clone https://github.com/kimtabilon/kiakaha-inventory.git`
 - create database in **phpmyadmin**
