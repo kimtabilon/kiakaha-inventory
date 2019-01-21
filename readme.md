@@ -18,7 +18,7 @@
 
 ## USERS
 
-| ROLE | NAME | EMAIL | PASSWORD |
+| Role | Name | Email | Password |
 | --- | --- | --- | --- |
 | Manager | Christopher	Dickens | christopher.dickens@gmail.com | secret |
 | Receiving Coordinator | Ryan	Welch | ryan.welch@gmail.com | secret |
