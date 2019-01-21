@@ -37,7 +37,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Good Items</span>
                   <span class="info-box-number"><% good_items.inventories.length %></span>
-                  <a href="#javascript">Export</a>
+                  <!-- <a href="#javascript">Export</a> -->
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -61,7 +61,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Sold</span>
                   <span class="info-box-number"><% sold_items.inventories.length %></span>
-                  <a href="#javascript">Export</a>
+                  <!-- <a href="#javascript">Export</a> -->
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -71,7 +71,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Customers</span>
                   <span class="info-box-number"><% donors.length %></span>
-                  <a href="#javascript">Export</a>
+                  <!-- <a href="#javascript">Export</a> -->
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
