@@ -35,7 +35,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="fa fa-list-alt"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Floor Inventory</span>
+                  <span class="info-box-text">Good Items</span>
                   <span class="info-box-number"><% good_items.inventories.length %></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->

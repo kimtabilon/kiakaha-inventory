@@ -318,15 +318,15 @@
                                         <option>Select Payment Type</option>
                                     </select>
                                   </div>
-                                  <label class="col-sm-1 control-label">Customer</label>
-                                  <div class="col-sm-3">
+                                  <label ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'" class="col-sm-1 control-label">Customer</label>
+                                  <div ng-show="payment_type!='' && payment_type.name!='Add Item to Inventory'"  class="col-sm-3">
                                     <select 
                                         class="form-control select2" 
                                         ng-model="selected_donor"
                                         ng-options="donor.id as '('+donor.store_credits[0].amount+') '+ (donor.donor_type.name=='Company' ? donor.profile.company : donor.name) + ' : ' + donor.donor_type.name for donor in donors | orderBy:'name'"
                                         ng-change="choose_donor(selected_donor)"
                                         style="width: 100%;">
-                                        <option>Select Donor</option>
+                                        <option>Select Customer</option>
                                     </select>
                                   </div>
                                 </div>

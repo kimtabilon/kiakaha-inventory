@@ -243,9 +243,11 @@ app.controller('transactionsController', function($scope, $http, $location, $fil
             continue_transaction = false;
         }
 
-        if($scope.donor.length == 0) {
-            alert('Please select donor for this transaction');
-            continue_transaction = false;
+        if($scope.payment_type.name!= 'Add Item to Inventory') {
+            if($scope.donor.length == 0) {
+                alert('Please select customer for this transaction');
+                continue_transaction = false;
+            }
         }
 
         if($scope.payment_type.length == 0) {

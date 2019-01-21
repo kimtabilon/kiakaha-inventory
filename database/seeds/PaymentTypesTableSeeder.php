@@ -15,7 +15,7 @@ class PaymentTypesTableSeeder extends Seeder
                 'Cash',
                 'Credit',
                 'Debit',
-                // 'Item Donation',
+                'Add Item to Inventory',
                 'Internal Sale',
                 'Warehouse Transfer',
         ];

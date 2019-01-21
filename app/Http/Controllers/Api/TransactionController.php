@@ -104,11 +104,14 @@ class TransactionController extends Controller
     {
         $payment        = $request->input('payment');
         $donor          = $request->input('donor');
-        $found_donor    = Donor::find($donor['id']);
         $inventories    = $request->input('items');
         $da_no          = $request->input('da_no');
         $special_discount= $request->input('special_discount');
         $remarks        = $request->input('remarks');
+
+        if (isset($donor['id'])) {
+            $found_donor    = Donor::find($donor['id']);
+        }
 
         $status = ItemStatus::all();
         foreach ($status as $s) {
@@ -219,7 +222,7 @@ class TransactionController extends Controller
                     }
                 }
 
-                $new_inv->donors()              ->attach($found_donor);
+                // $new_inv->donors()              ->attach($found_donor);
                 $new_inv->transactions()        ->attach($new_transaction);
 
                 /* ITEM CODE */
