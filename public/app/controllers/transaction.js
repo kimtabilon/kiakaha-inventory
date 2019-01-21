@@ -3,6 +3,7 @@ app.controller('transactionsController', function($scope, $http, $location, $fil
     .get(API_URL + 'transactions')
     .then(function (response) {
         $scope.types = response.data;
+        console.log($scope.types);
     });
 
     $http

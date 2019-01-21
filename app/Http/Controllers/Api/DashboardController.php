@@ -8,6 +8,7 @@ use \App\Item;
 use \App\Inventory;
 use \App\Donor;
 use \App\ItemStatus;
+use \App\ItemPrice;
 use \App\PaymentType;
 use \App\Transaction;
 use \Carbon\Carbon;
@@ -62,7 +63,7 @@ class DashboardController extends Controller
 
             'transactions'  => Transaction::whereBetween('created_at', [$from, $to])
                                 ->orderBy('created_at')
-                                ->with(['inventories','inventories.item'])
+                                ->with(['paymentType','inventories','inventories.item','inventories.itemPrices','inventories.itemSellingPrices','inventories.itemRestorePrices','inventories.user'])
                                 ->get(),
         ];
     }

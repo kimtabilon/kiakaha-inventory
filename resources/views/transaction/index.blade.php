@@ -25,11 +25,11 @@
               <div ng-repeat="type in types" class="tab-pane <% type.name=='Cash' ? 'active' : '' %>" id="<% type.name.replace(' ', '_') %>">
                 <table class="table">
                   <thead>
-                      <th>DA No.</th>
+                      <th>Transaction No.</th>
                       <th>Customer</th>
                       <th>No. of Items</th>
                       <th>Special Discount</th>
-                      <th>Total</th>
+                      <th>Amount</th>
                       <th>Remarks</th>
                       <th>Created</th>
                   </thead>
@@ -303,7 +303,7 @@
                             <form class="form-horizontal">
                               <div id="PrintTransaction">
                                 <div class="form-group">
-                                  <label class="col-sm-2 control-label">DA No.</label>
+                                  <label class="col-sm-2 control-label">Transaction No.</label>
                                   <div class="col-sm-2">
                                     <input ng-model="acknowledgement_no" type="text" class="form-control input-sm" placeholder="Acknowledgement #">
                                   </div>

@@ -37,6 +37,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Good Items</span>
                   <span class="info-box-number"><% good_items.inventories.length %></span>
+                  <a href="#javascript">Export</a>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -46,6 +47,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Transactions</span>
                   <span class="info-box-number"><% transactions.length - filteredTrans.length %></span>
+                  <div excel-export export-data="exportTransactionData" file-name="<% transactionFileName %>"></div>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -59,6 +61,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Sold</span>
                   <span class="info-box-number"><% sold_items.inventories.length %></span>
+                  <a href="#javascript">Export</a>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -68,6 +71,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Customers</span>
                   <span class="info-box-number"><% donors.length %></span>
+                  <a href="#javascript">Export</a>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -124,7 +128,9 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item" ng-repeat="inventory in inventories">
                       <div class="product-img">
-                        <img src="{{ asset('images/items/<% inventory.item_images[inventory.item_images.length - 1].id %>_thumb.jpg') }}" alt="Item">
+                        <img
+                          ng-show="inventory.item_images.length"
+                          src="{{ asset('images/items/<% inventory.item_images[inventory.item_images.length - 1].id %>_thumb.jpg') }}" alt="Item">
                       </div>
                       <div class="product-info">
                         <a href="javascript::;" class="product-title"><% inventory.item.name | limitTo:20 %> (<% inventory.quantity %>) <span class="label label-info pull-right"><% inventory.item_prices[0].market_price %></span></a>
@@ -289,6 +295,8 @@
 @stop
 
 @section('js')
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.2/xlsx.core.min.js"></script> 
+   <script src="{{ asset('js/download.min.js') }}"></script>
    <script src="{{ asset('js/Chart.min.js') }}"></script>
    <script src="{{ asset('js/dashboard2.js') }}"></script>
    <script src="{{ asset('app/controllers/dashboards.js') }}"></script>

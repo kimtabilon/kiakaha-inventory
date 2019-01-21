@@ -11,25 +11,6 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         to   : current,
     };
 
-    $scope.itemStatusColors = [
-        "#f56954",
-        "#00a65a",
-        "#f39c12",
-        "#00c0ef",
-        "#3c8dbc",
-        "#d2d6de",
-        "#4661EE",
-        "#EC5657",
-        "#1BCDD1",
-        "#8FAABB",
-        "#B08BEB",
-        "#F5A52A",
-        "#3EA0DD",
-        "#23BFAA",
-        "#FAA586",
-        "#EB8CC6",
-    ];
-
     /*var date1       = new Date($scope.report.from);
     var date2       = new Date($scope.report.to);
     var timeDiff    = Math.abs(date2.getTime() - date1.getTime());
@@ -57,6 +38,53 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
 
         $scope.good_items = $filter('filter')($scope.itemStatus, { name: 'Good'}, true)[0];
         $scope.sold_items = $filter('filter')($scope.itemStatus, { name: 'Sold'}, true)[0];
+
+        // Prepare Excel data:
+        $scope.transactionFileName = 'Transactions from ' + $scope.report.from + ' to ' + $scope.report.to;
+
+        $scope.exportTransactionData = [];
+        // Headers:
+        $scope
+            .exportTransactionData
+            .push([
+                    "Transaction No.", 
+                    "Customer", 
+                    "No. of Items",
+                    "Items",
+                    "Special Discount",
+                    "Amount",
+                    "Payment Type",
+                    "Remarks",
+                    "Date"
+                ]);
+        // Data:
+        angular.forEach($scope.transactions, function(value, key) {
+            if(value.payment_type.name != "Add Item to Inventory"){
+                var customer = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
+                var items = '';
+                var amount = $scope.trans_total_each(value.inventories) - value.special_discount;
+
+                angular.forEach(value.inventories, function(inv, invKey) {
+                    items += ' # ' + inv.item.name;
+                });
+
+                $scope
+                    .exportTransactionData
+                    .push([
+                        value.da_number, 
+                        customer, 
+                        value.inventories.length,
+                        items,
+                        value.special_discount,
+                        amount,
+                        value.payment_type.name,
+                        value.remarks,
+                        value.created_at
+                    ]);
+                
+            }
+                
+        });
     });
 
     $scope.show_report = function() {
@@ -99,6 +127,66 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         }  
         
     }
+
+    $scope.trans_total_each = function(ins) {
+        var total = 0;
+        angular.forEach(ins, function(i){
+            total+= (parseFloat(i.item_restore_prices[ i.item_restore_prices.length - 1].market_price) * parseFloat(i.quantity));
+        });
+
+        return parseFloat(total);
+    }
+
+    $scope.itemStatusColors = [
+        "#f56954",
+        "#00a65a",
+        "#f39c12",
+        "#00c0ef",
+        "#3c8dbc",
+        "#d2d6de",
+        "#4661EE",
+        "#EC5657",
+        "#1BCDD1",
+        "#8FAABB",
+        "#B08BEB",
+        "#F5A52A",
+        "#3EA0DD",
+        "#23BFAA",
+        "#FAA586",
+        "#EB8CC6",
+    ];
+
+    $scope.jsonToExport = [
+    {
+        "col1data": "1",
+      "col2data": "Fight Club",
+      "col3data": "Brad Pitt"
+    },
+    {
+        "col1data": "2",
+      "col2data": "Matrix (Series)",
+      "col3data": "Keanu Reeves"
+    },
+    {
+        "col1data": "3",
+      "col2data": "V for Vendetta",
+      "col3data": "Hugo Weaving"
+    }
+  ];
+
+  console.log('report date');
+  console.log($scope.report);
+  console.log($scope.transactions);
+  
+    // Prepare Excel data:
+    $scope.fileName = "report";
+    $scope.exportData = [];
+  // Headers:
+    $scope.exportData.push(["#", "Movie", "Actor"]);
+  // Data:
+    angular.forEach($scope.jsonToExport, function(value, key) {
+    $scope.exportData.push([value.col1data, value.col2data, value.col3data]);
+    });
         
 });
 
