@@ -39,6 +39,8 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         $scope.good_items = $filter('filter')($scope.itemStatus, { name: 'Good'}, true)[0];
         $scope.sold_items = $filter('filter')($scope.itemStatus, { name: 'Sold'}, true)[0];
 
+        console.log('hi');
+        console.log($scope.transactions);
         // Prepare Excel data:
         $scope.transactionFileName = 'Transactions from ' + $scope.report.from + ' to ' + $scope.report.to;
 
@@ -55,17 +57,22 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                     "Amount",
                     "Payment Type",
                     "Remarks",
-                    "Date"
+                    "Date",
+                    "Cashier"
                 ]);
         // Data:
         angular.forEach($scope.transactions, function(value, key) {
             if(value.payment_type.name != "Add Item to Inventory"){
-                var customer = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
+                var donors = value.inventories[0].donors;
+                var customer = donors[donors.length - 1].given_name + ' ' + donors[donors.length - 1].last_name;
+                var user = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
                 var items = '';
                 var amount = $scope.trans_total_each(value.inventories) - value.special_discount;
 
                 angular.forEach(value.inventories, function(inv, invKey) {
-                    items += ' #' + inv.item.name + '\n';
+                    var prices = inv.item_restore_prices;
+                    var price = prices[prices.length - 1].market_price;
+                    items += ' #' + inv.item.name + ' ' + price + ' - ' + inv.quantity + inv.unit + ' ' + parseFloat(price)*parseFloat(inv.quantity);
                 });
 
                 $scope
@@ -79,7 +86,8 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                         amount,
                         value.payment_type.name,
                         value.remarks,
-                        value.created
+                        value.created,
+                        user
                     ]);
                 
             }
