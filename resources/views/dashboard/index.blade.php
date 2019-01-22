@@ -226,7 +226,7 @@
                   </ul><!-- /.users-list -->
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="donors" target="_self" class="uppercase">View All Donors</a>
+                  <a href="donors" target="_self" class="uppercase">View All Customers</a>
                 </div><!-- /.box-footer -->
               </div><!--/.box -->
             </div><!-- /.col -->
