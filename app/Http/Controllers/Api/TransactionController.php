@@ -42,6 +42,8 @@ class TransactionController extends Controller
                 break;
         }
 
+        $sortPrice = "desc";
+
         return PaymentType::with([
                                 'transactions.inventories',
                                 'transactions.inventories.item',

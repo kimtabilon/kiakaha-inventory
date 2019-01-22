@@ -385,7 +385,7 @@ app.controller('transactionsController', function($scope, $http, $location, $fil
 
     $scope.new_customer_btn = function(new_customer) {
 
-        if(new_customer.donor_type != "" || confirm('Create new customer?')) {
+        if(new_customer.donor_type != "") {
             new_customer.donor_type = new_customer.donor_type != '' ? new_customer.donor_type : 'Customer';
 
             $http({
@@ -418,6 +418,8 @@ app.controller('transactionsController', function($scope, $http, $location, $fil
                     store_credits : [{ amount: 0 }]                
                 }
             });
+        } else {
+            alert('Customer type is required.');
         }     
     }
 
