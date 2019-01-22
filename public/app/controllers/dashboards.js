@@ -65,7 +65,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                 var amount = $scope.trans_total_each(value.inventories) - value.special_discount;
 
                 angular.forEach(value.inventories, function(inv, invKey) {
-                    items += ' # ' + inv.item.name;
+                    items += ' #' + inv.item.name + '\n';
                 });
 
                 $scope
@@ -79,7 +79,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                         amount,
                         value.payment_type.name,
                         value.remarks,
-                        value.created_at
+                        value.created
                     ]);
                 
             }
