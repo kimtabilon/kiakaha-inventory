@@ -185,11 +185,18 @@
 
                                 <div class="form-group">
                                   <label class="col-sm-1 control-label">Address</label>
-                                  <div class="col-sm-11">
+                                  <div class="col-sm-7">
                                     <textarea ng-model="new_customer.profile.address" class="form-control"></textarea>
                                     <!-- <input ng-model="new_customer.profile.address" type="text" class="form-control" placeholder="Full Address"> -->
                                   </div>
-                                </div>  
+                                  <label class="col-sm-1 control-label">Customer Type</label>
+                                  <div class="col-sm-3">
+                                    <input ng-model="new_customer.donor_type" list="donor_types" type="text" class="form-control" placeholder="Customer Type">
+                                  </div>
+                                  <datalist id="donor_types">
+                                    <option ng-repeat="type in donor_types" value="<% type.name %>"><!-- <% type.description %> --></option>
+                                  </datalist>
+                                </div> 
 
                                   
                               </div><!-- /.box-body -->
@@ -320,7 +327,7 @@
                                   <div class="row">
                                     <div class="col-xs-6 col-md-3" ng-repeat="inventory in inventories | filter:searh_good_items">
                                         <div class="thumbnail" ng-if="inventory.quantity>0">
-                                          <img src="images/items/<% inventory.item_images[inventory.item_images.length - 1].id %>_thumb.jpg" alt="...">
+                                          <img ng-show="inventory.item_images.length" src="images/items/<% inventory.item_images[inventory.item_images.length - 1].id %>_thumb.jpg" alt="...">
                                           <div class="caption">
                                             <strong><% inventory.item.name %></strong> <% inventory.remarks %><br/>
                                             <strong><% inventory.quantity %></strong> <% inventory.unit %>/s<br/>

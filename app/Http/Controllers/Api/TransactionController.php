@@ -42,16 +42,22 @@ class TransactionController extends Controller
                 break;
         }
 
-        $sortPrice = "desc";
+        $sortPrice = "asc";
 
         return PaymentType::with([
                                 'transactions.inventories',
                                 'transactions.inventories.item',
                                 'transactions.inventories.donors',
                                 'transactions.inventories.donors.profile',
-                                'transactions.inventories.itemPrices',
-                                'transactions.inventories.itemSellingPrices',
-                                'transactions.inventories.itemRestorePrices',
+                                'transactions.inventories.itemPrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
+                                'transactions.inventories.itemSellingPrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
+                                'transactions.inventories.itemRestorePrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
                                 'transactions.inventories.itemStatus',
                                 'transactions.inventories.itemCodes',
                                 'transactions.inventories.itemDiscounts'
@@ -64,6 +70,7 @@ class TransactionController extends Controller
     {
         $item_status = ItemStatus::with(['inventories'])->orderBy('name')->get();
         $good_item   = $item_status->where('name', 'Good')->first()->id;
+        $sortPrice = 'asc';
         return [
             'categories'    => Category::orderBy('name')->get(),
             'code_types'    => ItemCodeType::orderBy('name')->get(),
@@ -72,7 +79,22 @@ class TransactionController extends Controller
             'item_status'   => $item_status,
             'items'         => Item::with(['category'])->orderBy('name')->get(),
             'inventories'   => Inventory::where('item_status_id', $good_item)
-                                        ->with(['item', 'itemStatus', 'itemImages', 'itemCodes', 'itemPrices', 'itemSellingPrices', 'itemRestorePrices', 'itemDiscounts'])
+                                        ->with([
+                                            'item',
+                                            'itemStatus',
+                                            'itemImages',
+                                            'itemCodes',
+                                            'itemPrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                            },
+                                            'itemSellingPrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                            },
+                                            'itemRestorePrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                            },
+                                            'itemDiscounts'
+                                        ])
                                         ->get(),
         ];
     }
@@ -323,7 +345,7 @@ class TransactionController extends Controller
             }
         }
 
-
+        $sortPrice = 'asc';
         return Transaction::where('id', $new_transaction->id)
                             ->with([
                                 'inventories',
@@ -331,9 +353,15 @@ class TransactionController extends Controller
                                 'inventories.donors',
                                 'inventories.donors.profile',
                                 'inventories.itemCodes',
-                                'inventories.itemPrices',
-                                'inventories.itemSellingPrices',
-                                'inventories.itemRestorePrices',
+                                'inventories.itemPrices'  => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
+                                'inventories.itemSellingPrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
+                                'inventories.itemRestorePrices' => function ($q) use ($sortPrice) {
+                                                               $q->orderBy('id', $sortPrice);
+                                },
                                 'inventories.itemStatus',
                                 'paymentType'
                             ])
