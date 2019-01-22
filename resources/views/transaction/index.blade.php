@@ -469,7 +469,15 @@
                                     <select 
                                         class="form-control select2" 
                                         ng-model="selected_inventory"
-                                        ng-options="inventory.id as '('+inventory.quantity+') '+ inventory.item.name +' - '+ inventory.remarks for inventory in inventories | orderBy:'item.name'"
+                                        ng-options="inventory.id 
+                                                      as 
+                                                      '(' 
+                                                      + inventory.quantity 
+                                                      +') '
+                                                      + inventory.item.name 
+                                                      + ( inventory.remarks ? ' - '+ inventory.remarks : '' )
+                                                      for inventory 
+                                                      in inventories | orderBy:'item.name'"
                                         ng-change="choose_item_from_inv(selected_inventory)"
                                         style="width: 100%;">
                                     </select>
