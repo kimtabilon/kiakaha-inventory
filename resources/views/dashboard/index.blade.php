@@ -295,7 +295,7 @@
 @stop
 
 @section('js')
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.2/xlsx.core.min.js"></script> 
+   <script src="{{ asset('js/xlsx.core.min.js') }}"></script>
    <script src="{{ asset('js/download.min.js') }}"></script>
    <script src="{{ asset('js/Chart.min.js') }}"></script>
    <script src="{{ asset('js/dashboard2.js') }}"></script>
