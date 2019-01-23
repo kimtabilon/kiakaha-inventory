@@ -50,7 +50,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                     "Transaction No.", 
                     "Customer", 
                     "No. of Items",
-                    "Items",
+                    // "Items",
                     "Special Discount",
                     "Total Amount",
                     "Payment Type",
@@ -63,7 +63,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
             if(value.payment_type.name != "Add Item to Inventory"){
                 var donors = value.inventories[0].donors;
                 var user = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
-                var items = '';
+                // var items = '';
                 var amount = $scope.trans_total_each(value.inventories) - value.special_discount;
 
                 if(donors.length) {
@@ -74,11 +74,11 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                     }
                 }
 
-                angular.forEach(value.inventories, function(inv, invKey) {
+                /*angular.forEach(value.inventories, function(inv, invKey) {
                     var prices = inv.item_restore_prices;
                     var price = prices[prices.length - 1].market_price;
                     items += ' #' + inv.item.name + ' ' + price + ' - ' + inv.quantity + inv.unit + ' ' + parseFloat(price)*parseFloat(inv.quantity);
-                });
+                });*/
 
                 $scope
                     .exportTransactionData
@@ -86,7 +86,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                         value.da_number, 
                         customer, 
                         value.inventories.length,
-                        items,
+                        // items,
                         value.special_discount,
                         amount,
                         value.payment_type.name,
