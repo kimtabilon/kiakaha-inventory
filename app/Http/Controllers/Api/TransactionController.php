@@ -49,6 +49,7 @@ class TransactionController extends Controller
                                 'transactions.inventories.item',
                                 'transactions.inventories.donors',
                                 'transactions.inventories.donors.profile',
+                                'transactions.inventories.donors.donorType',
                                 'transactions.inventories.itemPrices' => function ($q) use ($sortPrice) {
                                                                $q->orderBy('id', $sortPrice);
                                 },
