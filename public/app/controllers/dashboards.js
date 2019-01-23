@@ -39,8 +39,6 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         $scope.good_items = $filter('filter')($scope.itemStatus, { name: 'Good'}, true)[0];
         $scope.sold_items = $filter('filter')($scope.itemStatus, { name: 'Sold'}, true)[0];
 
-        console.log('hi');
-        console.log($scope.transactions);
         // Prepare Excel data:
         $scope.transactionFileName = 'Transactions from ' + $scope.report.from + ' to ' + $scope.report.to;
 
@@ -54,7 +52,7 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                     "No. of Items",
                     "Items",
                     "Special Discount",
-                    "Amount",
+                    "Total Amount",
                     "Payment Type",
                     "Remarks",
                     "Date",
@@ -96,6 +94,70 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
                         value.created,
                         user
                     ]);
+                
+            }
+                
+        });
+        // EndOf export transaction
+
+        // Prepare Excel data:
+        $scope.itemsFileName = 'Transactions with Items from ' + $scope.report.from + ' to ' + $scope.report.to;
+
+        $scope.exportItemsData = [];
+        // Headers:
+        $scope
+            .exportItemsData
+            .push([
+                    "Transaction No.", 
+                    "Customer", 
+                    "Item Name",
+                    "Quantity",
+                    "Amount",
+                    "Unit",
+                    "Total",
+                    "Payment Type",
+                    "Date",
+                    "Cashier"
+                ]);
+        // Data:
+        angular.forEach($scope.transactions, function(value, key) {
+            if(value.payment_type.name != "Add Item to Inventory"){
+                
+                angular.forEach(value.inventories, function(inv, invKey) {
+                    var donors = value.inventories[0].donors;
+                    var user = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
+                    
+
+                    if(donors.length) {
+                        if(donors[donors.length - 1].donor_type.name == 'Company') {
+                           var customer = donors[donors.length - 1].profile.company; 
+                        } else {
+                            var customer = donors[donors.length - 1].name; 
+                        }
+                    }
+
+                    var prices = inv.item_restore_prices;
+                    var price = prices[prices.length - 1].market_price;
+                    
+                    $scope
+                        .exportItemsData
+                        .push([
+                            value.da_number, 
+                            customer, 
+                            inv.item.name,
+
+                            inv.quantity,
+                            price,
+                            inv.unit,
+                            parseFloat(price)*parseFloat(inv.quantity),
+
+
+                            value.payment_type.name,
+                            value.created,
+                            user
+                        ]);
+                }, value);
+                    
                 
             }
                 

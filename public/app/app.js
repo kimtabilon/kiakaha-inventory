@@ -15,10 +15,11 @@ var app = angular.module('inventory', ['angular.filter', 'ngLoadingSpinner'], fu
 	        restrict: 'A',
 	        scope: {
 	        	fileName: "@",
+	        	linkLabel: "@",
 	            data: "&exportData"
 	        },
 	        replace: true,
-	        template: '<a href="#javascript" class="" ng-click="download()">Export</a>',
+	        template: '<a href="#javascript" class="" ng-click="download()">{{linkLabel}}</a>',
 	        link: function (scope, element) {
 	        	
 	        	scope.download = function() {

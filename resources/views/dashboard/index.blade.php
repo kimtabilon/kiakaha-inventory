@@ -47,7 +47,8 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Transactions</span>
                   <span class="info-box-number"><% transactions.length - filteredTrans.length %></span>
-                  <div excel-export export-data="exportTransactionData" file-name="<% transactionFileName %>"></div>
+                  <div excel-export export-data="exportTransactionData" file-name="<% transactionFileName %>" link-label="Export"></div><br>
+                  <div excel-export export-data="exportItemsData" file-name="<% itemsFileName %>" link-label="Export with Items"></div>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
