@@ -72,7 +72,17 @@
                             <!-- <td><span ng-if="inventory.length==1"><% new_value(inventory[0]) %></span></td> -->
                             
                             <!-- <td ng-click="show_discounts(inventory[0])"><span ng-if="inventory.length==1"><% sum(inventory[0].item_discounts, 'percent') %></span></td> -->
-                            <td><span ng-if="inventory.length==1"><% '00' + inventory[0].donors[inventory[0].donors.length - 1].id + ' - ' + inventory[0].donors[inventory[0].donors.length - 1].name %> <% inventory[0].donors[inventory[0].donors.length - 1].profile.company %> </span></td>
+                            <td>
+                                <span ng-if="inventory.length==1">
+                                    <span ng-if="inventory[0].donors[inventory[0].donors.length - 1].donor_type.name == 'Individual'">
+                                    <% inventory[0].donors[inventory[0].donors.length - 1].name %> 
+                                    </span> 
+
+                                    <span ng-if="inventory[0].donors[inventory[0].donors.length - 1].donor_type.name == 'Company'">
+                                    <% inventory[0].donors[inventory[0].donors.length - 1].profile.company %> 
+                                    </span> 
+                                </span>
+                            </td>
                             <td ng-click="toggle('remarks', inventory[0])"><span ng-if="inventory.length==1"><% inventory[0].remarks %></span></td>
                             <td><span ng-if="inventory.length==1"><% inventory[0].created %></span></td>     
                             <!-- <td><span ng-if="inventory.length==1"><img src="data:image/png;base64,<% code(inventory[0].item_codes, 'Barcode').barcode %>" alt="barcode" /></span></td> -->
@@ -102,7 +112,15 @@
                             <!-- <td><% new_value(inv) %></td> -->
                             <td ng-click="toggle('item_restore_price', inv)"><% inv.item_restore_prices[inv.item_restore_prices.length - 1].market_price %></td>
                             <!-- <td ng-click="show_discounts(inv)"><% sum(inv.item_discounts, 'percent') %></td> -->
-                            <td><% '00'+inv.donors[inv.donors.length - 1].id %> - <% inv.donors[inv.donors.length - 1].name %> <% inv.donors[inv.donors.length - 1].profile.company %></td>
+                            <td>
+                                <span ng-if="inventory[0].donors[inventory[0].donors.length - 1].donor_type.name == 'Individual'">
+                                <% inv.donors[inv.donors.length - 1].name %> 
+                                </span> 
+
+                                <span ng-if="inventory[0].donors[inventory[0].donors.length - 1].donor_type.name == 'Company'">
+                                <% inv.donors[inv.donors.length - 1].profile.company %> 
+                                </span>    
+                            </td>
                             <td ng-click="toggle('remarks', inv)"><% inv.remarks %></td>
                             <td><% inv.created %></td>
                             <!-- <td><img ng-if="inventory.length>1" src="data:image/png;base64,<% code(inv.item_codes, 'Barcode').barcode %>" alt="barcode" /></td> -->
