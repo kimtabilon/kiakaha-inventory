@@ -64,10 +64,17 @@ app.controller('dashboardController', function ($scope, $http, $location, $filte
         angular.forEach($scope.transactions, function(value, key) {
             if(value.payment_type.name != "Add Item to Inventory"){
                 var donors = value.inventories[0].donors;
-                var customer = donors[donors.length - 1].given_name + ' ' + donors[donors.length - 1].last_name;
                 var user = value.inventories[0].user.given_name + ' ' + value.inventories[0].user.last_name;
                 var items = '';
                 var amount = $scope.trans_total_each(value.inventories) - value.special_discount;
+
+                if(donors.length) {
+                    if(donors[donors.length - 1].donor_type.name == 'Company') {
+                       var customer = donors[donors.length - 1].profile.company; 
+                    } else {
+                        var customer = donors[donors.length - 1].name; 
+                    }
+                }
 
                 angular.forEach(value.inventories, function(inv, invKey) {
                     var prices = inv.item_restore_prices;

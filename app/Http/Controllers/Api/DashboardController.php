@@ -63,7 +63,7 @@ class DashboardController extends Controller
 
             'transactions'  => Transaction::whereBetween('created_at', [$from, $to])
                                 ->orderBy('created_at')
-                                ->with(['paymentType','inventories','inventories.donors','inventories.item','inventories.itemPrices','inventories.itemSellingPrices','inventories.itemRestorePrices','inventories.user'])
+                                ->with(['paymentType','inventories','inventories.donors','inventories.donors.profile','inventories.donors.donorType','inventories.item','inventories.itemPrices','inventories.itemSellingPrices','inventories.itemRestorePrices','inventories.user'])
                                 ->get(),
         ];
     }
