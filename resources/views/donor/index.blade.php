@@ -90,7 +90,7 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Market Price</th>
-                            <th>Selling Price</th>
+                            <th>Store Price</th>
                             <th>Remarks</th>
                             <th>Status</th>
                         </thead>
@@ -102,7 +102,7 @@
                                 <td><% inventory.unit %></td>
 
                                 <td><% inventory.item_prices[ inventory.item_prices.length - 1].market_price %></td>
-                                <td><% inventory.item_selling_prices[ inventory.item_selling_prices.length - 1].market_price %></td>
+                                <td><% inventory.item_restore_prices[ inventory.item_restore_prices.length - 1].market_price %></td>
                                 
                                 <td><% inventory.remarks %></td>
                                 <td><% inventory.item_status.name %></td>

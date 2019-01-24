@@ -37,6 +37,7 @@ class DonorController extends Controller
                                 'donors.inventories.item',
                                 'donors.inventories.itemPrices',
                                 'donors.inventories.itemSellingPrices',
+                                'donors.inventories.itemRestorePrices',
                                 'donors.inventories.itemCodes',
                                 'donors.inventories.itemStatus',
                             ])

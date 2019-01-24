@@ -51,9 +51,17 @@ app.controller('donorsController', function($scope, $http, $location, $filter, A
 	$scope.toggle = function(data, type) {
         switch(type) {
             case 'show_list_of_items':
+                console.log(data);
+                var title = '';
+                if(data.donor_type.name == 'Company') {
+                    title = "Item bought by " + data.profile.company;
+                } else {
+                    title = "Item bought by " + data.name;
+                }
+                
                 $scope.modal = {
                     type        : type, 
-                    title       : 'Items donated by ' + data.name,
+                    title       : title,
                     inventories : data.inventories,
                 }
                 break;
