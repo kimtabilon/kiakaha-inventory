@@ -216,16 +216,16 @@ class TransactionController extends Controller
                             $new_inv->itemDiscounts()  ->attach($v);
                         }
                     }
-                    if ($transactions->count()) {
+                    /*if ($transactions->count()) {
                         foreach ($transactions as $v) {
                             $new_inv->transactions()   ->attach($v);
                         }
-                    }
-                    if ($donors      ->count()) {
+                    }*/
+                    /*if ($donors      ->count()) {
                         foreach ($donors as $v) {
                             $new_inv->donors()         ->attach($v);
                         }
-                    }
+                    }*/
                     
                     if ($codes           ->count()) {
                         $new_inv->itemCodes()           ->attach($codes         ->last());
@@ -309,11 +309,11 @@ class TransactionController extends Controller
                                 $new_inv->transactions()   ->attach($v);
                             }
                         }
-                        if ($donors      ->count()) {
+                        /*if ($donors      ->count()) {
                             foreach ($donors as $v) {
                                 $new_inv->donors()         ->attach($v);
                             }
-                        }
+                        }*/
                         
                         if ($codes           ->count()) {
                             $new_inv->itemCodes()           ->attach($codes         ->last());
