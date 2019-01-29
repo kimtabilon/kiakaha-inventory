@@ -36,9 +36,18 @@
                   <tbody>
                       <tr ng-repeat="transaction in type.transactions | orderBy:'-created_at' | filter:search">
                           <td ng-click="toggle(transaction)"><span class="badge"><% transaction.da_number %></span></td>
-                          <td>
+                          <!-- <td>
                             <% transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].name %>
                             <% transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].profile.company %>
+                          </td> -->
+                          <td>
+                            <span ng-if="transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].donor_type.name=='Individual'">
+                            <% transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].name %>
+                            </span>
+
+                            <span ng-if="transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].donor_type.name=='Company'">
+                            <% transaction.inventories[0].donors[ transaction.inventories[0].donors.length - 1 ].profile.company %>
+                            </span>
                           </td>
                           <td><% transaction.inventories.length %></td>
                           <td><% transaction.special_discount %></td>
